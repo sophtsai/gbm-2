@@ -9,10 +9,16 @@ form {
 
 label {
   margin-right: 8px;
+  color: #efefef;
 }
 
 input {
   margin-bottom: 10px;
+  color: white;
+}
+
+input:focus {
+  color: white;
 }
 
 button {
