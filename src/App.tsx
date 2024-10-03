@@ -7,8 +7,8 @@ const App: React.FC = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [nameClicks, setNameClicks] = useState(0);
   const [passwordClicks, setPasswordClicks] = useState(0);
-  const nameImageRef = useRef<HTMLImageElement>(null);
-  const passwordImageRef = useRef<HTMLImageElement>(null);
+  const nameInputRef = useRef<HTMLInputElement>(null);
+  const passwordInputRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
@@ -22,24 +22,14 @@ const App: React.FC = () => {
   const handleNameClick = () => {
     setNameClicks(nameClicks + 1);
     if (nameClicks === 1) {
-      nameImageRef.current!.style.display = 'block';
-    } else if (nameClicks === 6) {
-      nameImageRef.current!.style.display = 'none';
+      nameInputRef.current!.style.display = 'block';
     }
   };
 
   const handlePasswordClick = () => {
     setPasswordClicks(passwordClicks + 1);
     if (passwordClicks === 1) {
-      passwordImageRef.current!.style.display = 'block';
-    } else if (passwordClicks === 6) {
-      passwordImageRef.current!.style.display = 'none';
-    }
-  };
-
-  const handleImageClick = (imageRef: React.RefObject<HTMLImageElement>) => {
-    if (imageRef.current) {
-      imageRef.current.style.display = 'none';
+      passwordInputRef.current!.style.display = 'block';
     }
   };
 
@@ -61,13 +51,6 @@ const App: React.FC = () => {
                 ref={nameInputRef}
                 style={{ display: 'none' }}
               />
-              <img
-                src="your-image-path.jpg"
-                alt="Name image"
-                ref={nameImageRef}
-                style={{ display: 'none' }}
-                onClick={() => handleImageClick(nameImageRef)}
-              />
             </div>
           </div>
           <div>
@@ -80,13 +63,6 @@ const App: React.FC = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 ref={passwordInputRef}
                 style={{ display: 'none' }}
-              />
-              <img
-                src="your-image-path.jpg"
-                alt="Password image"
-                ref={passwordImageRef}
-                style={{ display: 'none' }}
-                onClick={() => handleImageClick(passwordImageRef)}
               />
             </div>
           </div>
